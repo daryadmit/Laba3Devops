@@ -37,10 +37,12 @@ Ansible используют сетевые администраторы, DevOps
 Шаг 1.2: Установка Python и pip
 Ansible требует Python 3.9+:
 <img width="624" height="328" alt="image" src="https://github.com/user-attachments/assets/b2fde3b5-5fc0-47ce-96bb-82b060cab72c" />
+
 Проверка версии Python:
 <img width="351" height="54" alt="image" src="https://github.com/user-attachments/assets/e0847805-03d0-4cd5-adc0-8ed5eacffb9e" />
 Шаг 1.3: Установка Ansible
 <img width="624" height="314" alt="image" src="https://github.com/user-attachments/assets/fbaeb8ef-7e15-43d6-8117-b3503b38be22" />
+
 Шаг 1.4: Проверка установки Ansible
  <img width="624" height="95" alt="image" src="https://github.com/user-attachments/assets/ddd0e882-4901-4100-ade8-0a2d94102e4e" />
 
@@ -48,9 +50,8 @@ Ansible требует Python 3.9+:
 Шаг 2.1: Генерация SSH ключевой пары на управляющей машине
  <img width="563" height="374" alt="image" src="https://github.com/user-attachments/assets/d7009cf3-d0a1-4806-8687-bd5d78dcba9a" />
 
-
 Шаг 2.2: Установка прав доступа на приватный ключ
- <img width="420" height="57" alt="image" src="https://github.com/user-attachments/assets/9c01e3d8-da90-4bfa-b464-37ddce32dc4b" />
+<img width="420" height="57" alt="image" src="https://github.com/user-attachments/assets/9c01e3d8-da90-4bfa-b464-37ddce32dc4b" />
 
 
 3. Запуск управляемого контейнера в Docker
