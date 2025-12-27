@@ -1,12 +1,12 @@
 # Лабораторная работа: Основы Ansible в DevOps
 ---
 ## Введение
-Что такое Ansible
+### Что такое Ansible
 Ansible помогает автоматизировать настройку удалённых серверов в сети и управление ими. Он позволяет управлять конфигурациями машин, доставлять и развёртывать приложения, а также выполнять другие задачи администрирования без ручного вмешательства.
 
 Обычным способом нужно вручную прописывать каждую команду или скрипт и по кругу запускать их на серверах. Когда серверов много, это процесс становится сложным и трудоёмким. C помощью Ansible всю настройку можно прописать в одном конфигурационном файле, который программа разошлёт на большое количество машин. Такой метод работы называют IaC — infrastructure as a code («инфраструктура как код»).
 
-Для чего используют Ansible
+### Для чего используют Ansible
 Ansible используют сетевые администраторы, DevOps-инженеры, разработчики ПО и системные администраторы. Вот основные функции программы:
 
 ● Управление конфигурацией. Ansible позволяет управлять конфигурациями серверов и поддерживать их, чтобы они оставались в согласованном состоянии. С его помощью можно проводить установку и настройку программного обеспечения, управлять файлами конфигурации и обеспечивать выполнение политик безопасности.
@@ -28,3 +28,72 @@ Ansible используют сетевые администраторы, DevOps
 ● Управление пользователями и группами. Ansible упрощает управление учётными записями пользователей и группами на серверах, что важно для соблюдения политик безопасности и управления доступом.
 
 ● Создание тестовых и разработческих сред. Ansible позволяет быстро и легко создавать и настраивать тестовые и разработческие среды, обеспечивая их идентичность продуктивным системам. Это помогает разработчикам и тестировщикам работать в условиях, максимально приближенных к реальным.
+---
+## Практическая часть
+1. Установка Ansible на управляющую машину (Linux/WSL)
+Шаг 1.1: Обновление пакетов системы
+<img width="558" height="212" alt="image" src="https://github.com/user-attachments/assets/4427ba61-0773-48aa-8e6d-75c3f15a18c5" />
+Шаг 1.2: Установка Python и pip
+Ansible требует Python 3.9+:
+<img width="624" height="328" alt="image" src="https://github.com/user-attachments/assets/b2fde3b5-5fc0-47ce-96bb-82b060cab72c" />
+Проверка версии Python:
+<img width="351" height="54" alt="image" src="https://github.com/user-attachments/assets/e0847805-03d0-4cd5-adc0-8ed5eacffb9e" />
+Шаг 1.3: Установка Ansible
+<img width="624" height="314" alt="image" src="https://github.com/user-attachments/assets/fbaeb8ef-7e15-43d6-8117-b3503b38be22" />
+Шаг 1.4: Проверка установки Ansible
+ <img width="624" height="95" alt="image" src="https://github.com/user-attachments/assets/ddd0e882-4901-4100-ade8-0a2d94102e4e" />
+
+2. Подготовка SSH ключей для управляемых машин
+Шаг 2.1: Генерация SSH ключевой пары на управляющей машине
+ <img width="563" height="374" alt="image" src="https://github.com/user-attachments/assets/d7009cf3-d0a1-4806-8687-bd5d78dcba9a" />
+
+
+Шаг 2.2: Установка прав доступа на приватный ключ
+ <img width="420" height="57" alt="image" src="https://github.com/user-attachments/assets/9c01e3d8-da90-4bfa-b464-37ddce32dc4b" />
+
+
+3. Запуск управляемого контейнера в Docker
+Шаг 3.1: Создание Dockerfile для управляемого хоста
+ <img width="624" height="623" alt="image" src="https://github.com/user-attachments/assets/1814dce2-eea0-489b-bc24-7dbc80469a01" />
+
+Шаг 3.2: Создание docker-compose.yml
+<img width="624" height="387" alt="image" src="https://github.com/user-attachments/assets/18fb04ea-c61a-4dd2-bcef-8ee54580cd43" />
+
+Шаг 3.3: Сборка и запуск контейнера
+![5368379726533168008](https://github.com/user-attachments/assets/fb2e3e1b-c9d9-444c-b3fb-596a7f0a8002)
+Шаг 3.4: Проверка запущенного контейнера
+![5368379726533168050](https://github.com/user-attachments/assets/1ca6495a-ca97-4070-ab0b-5b7fe6c7a41b)
+Шаг 3.5: Копирование публичного SSH ключа в контейнер
+![5368379726533168051](https://github.com/user-attachments/assets/b611dcd0-4b6e-46ad-81e0-34b33893f3f8)
+![5368379726533168053](https://github.com/user-attachments/assets/6cc9b1b3-3725-4cbf-8ed7-204c0866e560)
+![5368379726533168058](https://github.com/user-attachments/assets/c1dab6b1-cf7a-441f-97b1-0046883f66f8)
+4. Проверка SSH подключения к контейнеру
+Шаг 4.1: Проверка SSH подключения
+![5368379726533168060](https://github.com/user-attachments/assets/888fc606-cf46-4432-ac39-3889721cc729)
+5. Создание инвентарного файла Ansible (inventory)
+Шаг 5.1: Создание файла inventory.ini
+![5368379726533168066](https://github.com/user-attachments/assets/2915220b-c17b-4d88-a979-90b66654b4fd)
+Шаг 5.2: Проверка инвентаря
+![5368379726533168067](https://github.com/user-attachments/assets/d6bda427-5baf-44f7-9f16-b87ee1881f82)
+6. Проверка подключения Ansible к управляемому хосту
+Шаг 6.1: Тест ping
+![5368379726533168069](https://github.com/user-attachments/assets/8ed5cc71-75a3-45ad-a506-6d495e70577f)
+Шаг 6.2: Сбор информации о системе (facts)
+![5368379726533168070](https://github.com/user-attachments/assets/8f6f7b97-8464-4e9c-a3bb-719f53e7953d)
+Шаг 6.3: Выполнение простой команды
+![5368379726533168071](https://github.com/user-attachments/assets/815490fb-1f43-45c1-9af6-11e7060c6ad4)
+7. Создание и запуск Ansible Playbook
+Шаг 7.3: Запуск playbook
+![5368379726533168076](https://github.com/user-attachments/assets/63695e91-2f99-48bf-9448-a4dafafd98ca)
+
+
+Задание 2: Базовые ad-hoc команды
+Получите информацию о ядрах CPU управляемого хоста и Проверьте свободное место на диске:
+![5368379726533168079](https://github.com/user-attachments/assets/3fc2771c-1302-41fc-983f-80419b22d762)
+Получите список всех пользователей 
+![5368379726533168081](https://github.com/user-attachments/assets/6227a66a-b079-4b67-ab67-a20652d56b6c)
+
+Задание 3: Работа с файлами
+Создайте новый playbook task3_files.yml и Запустите playbook:
+![5368379726533168086](https://github.com/user-attachments/assets/355738b7-8020-4b21-aaf1-1bee1c7e4bf6)
+
