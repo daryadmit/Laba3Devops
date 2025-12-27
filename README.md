@@ -33,6 +33,7 @@ Ansible используют сетевые администраторы, DevOps
 1. Установка Ansible на управляющую машину (Linux/WSL)
 Шаг 1.1: Обновление пакетов системы
 <img width="558" height="212" alt="image" src="https://github.com/user-attachments/assets/4427ba61-0773-48aa-8e6d-75c3f15a18c5" />
+
 Шаг 1.2: Установка Python и pip
 Ansible требует Python 3.9+:
 <img width="624" height="328" alt="image" src="https://github.com/user-attachments/assets/b2fde3b5-5fc0-47ce-96bb-82b060cab72c" />
